@@ -24,4 +24,6 @@
 * Code review
 * Other guidelines
 
+### CouchDB Access ###
+
 ### SSH key information ###
