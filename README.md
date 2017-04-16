@@ -25,5 +25,7 @@
 * Other guidelines
 
 ### CouchDB Access ###
+* http://115.146.95.71:5984/_utils/
+* user name - smoky | password - smoky
 
 ### SSH key information ###
