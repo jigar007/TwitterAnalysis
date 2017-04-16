@@ -29,3 +29,5 @@
 * user name - smoky | password - smoky
 
 ### SSH key information ###
+* The public key and private key have been added to this repo.
+* Use these keys to gain access to the instance which runs couchdb
