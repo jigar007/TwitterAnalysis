@@ -27,3 +27,9 @@
 ### SSH key information ###
 * The public key and private key have been added to this repo.
 * Use these keys to gain access to the instance which runs couchdb
+
+### Twitter Stories
+* Tourist places visited by people (aurin) and collect tweets from people in those places and use sentiment analysis to find out popular places
+* suburbs where sports are played most vs health of people in that suburb
+* collect shopping tweets from a suburb, find number of malls in that suburb, find how wealthy people of that suburb are
+* (later) using search API find the sentiment of people for the last federal elections
