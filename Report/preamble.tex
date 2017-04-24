@@ -1,0 +1,39 @@
+% PREAMBLE: this file defines the document type, imports all required packages, and defines the header/footer.
+% !TEX root = main.tex
+
+% Define document type
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[a4paper,11pt]{article}
+
+%---------
+% Packages
+%---------
+\usepackage[stable]{footmisc}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage[margin=2cm]{geometry}
+\pagestyle{fancy}
+\usepackage{graphicx,array}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{amsmath,amssymb,textcomp}
+\usepackage[justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{appendix}
+\setlength{\parindent}{0pt}
+\usepackage{cleveref}
+\usepackage[superscript]{cite}
+\usepackage{microtype}
+
+% \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}} % To add an equation number and reference to align* type \numberthis \label{} after eqn
+%\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+%---------------
+% Header & Footer
+%---------------
+\lhead{}
+\chead{Cluster and Cloud Computing $|$ COMP90024 $|$ Australian City Analytics}
+\rhead{}
+\rfoot{\thepage\ of \pageref{LastPage}}
+\cfoot{}
+\lfoot{Shivank Sharma $|$ Rakesh Khemaram $|$ Jigar Thakkar $|$ Tanvi Bali $|$ Sam Shackleton}
