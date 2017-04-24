@@ -11,6 +11,6 @@
 * Shivank -> Bootstrap the website using nodeJS
 * Rakesh, Tanvi, Jigar -> d3.js
 ### Architectural Diagram ###
-* Everyone will jot down the blueprint of the diagram today
+* ~~Everyone will jot down the blueprint of the diagram today~~
 ### Report Writing ###
 * Tanvi and Sam
