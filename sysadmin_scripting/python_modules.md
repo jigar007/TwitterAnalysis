@@ -1,6 +1,6 @@
 # Python Requirements #
 ### Python 3+ should be running ###
 * Tweepy
-* Twiliio
+* Twilio
 * Boto3
 * Requests
