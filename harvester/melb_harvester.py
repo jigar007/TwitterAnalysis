@@ -3,12 +3,15 @@ from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
 ##################################################
+
 # tweepy error handling ##########################
 from tweepy.error import TweepError
 ##################################################
+
 # twilio for notification ########################
 from twilio.rest import TwilioRestClient
 ##################################################
+
 # other necessary modules ########################
 import requests
 import sys
@@ -36,14 +39,17 @@ geobox_final = geobox_melbourne + geobox_sydney + geobox_brisbane + geobox_perth
 ############################################################################################################
 
 # couchDB connection string and other constants ############################################################
-url = 'http://115.146.95.71:5984/'
+url = 'http://smoky:smoky@115.146.95.71:5984/RawTweetsDB'
+headers = {'Content-Type': 'application/json'}
 ############################################################################################################
 
 
 # This is a basic listener that just prints received tweets to stdout.
 class StdOutListener(StreamListener):
     def on_data(self, data):
+        payload = data
         print(data)
+        res = requests.post(url=url, data=payload, headers=headers)
         return True
 
     def on_error(self, status):
