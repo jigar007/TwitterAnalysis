@@ -3,11 +3,15 @@
 
 import boto3
 
-#For connecting to NeCTAR
-ec2 = boto3.resource('ec2',aws_access_key_id="f3371700d8d046c6bcf76de03e83a491",
-                    aws_secret_access_key="5519eda2f6bd4cb18a697fab94205b4c",
-                    region_name="NeCTAR",
-                    endpoint_url="https://nova.rc.nectar.org.au:8773/services/Cloud")
+try:
+    #For connecting to NeCTAR
+    ec2 = boto3.resource('ec2',aws_access_key_id="f3371700d8d046c6bcf76de03e83a491",
+                        aws_secret_access_key="5519eda2f6bd4cb18a697fab94205b4c",
+                        region_name="NeCTAR",
+                        endpoint_url="https://nova.rc.nectar.org.au:8773/services/Cloud")
+except:
+    print("Error while connecting with given credentials.")
+
 
 #Creating new instance
 responces =ec2.create_instances(ImageId='ami-86f4a44c',
