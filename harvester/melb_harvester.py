@@ -63,7 +63,8 @@ class StdOutListener(StreamListener):
                                           body='At line {0}: {1}'.format(line_num, ve))
             clientJigar.messages.create(to="+61406101797", from_="+61409738448",
                                         body='At line {0}: {1}'.format(line_num, ve))
-            return False
+            # don't stop the stream, just send the process tweet in queue instead
+            return True
         except requests.exceptions.Timeout as timeout:
             line_num = sys.exc_info()[2].tb_lineno
             print(timeout)
@@ -129,6 +130,6 @@ if __name__ == '__main__':
         line_num = sys.exc_info()[2].tb_lineno
         print('Exception: {0}'.format(e))
         clientShivank.messages.create(to="+61426274869", from_="+61439548489",
-                                      body=e)
+                                      body='At line {0}: {1}'.format(line_num, e))
         clientJigar.messages.create(to="+61406101797", from_="+61409738448",
-                                    body=e)
+                                    body='At line {0}: {1}'.format(line_num, e))
