@@ -19,7 +19,7 @@ consumer_secret = "xmZ5NpbbqnLFsWCB295B1QBrm7KocRNc5LLPtWA4hVbUldlZAS"
 # create twitter API object
 #-----------------------------------------------------------------------
 
-api = twitter.Api(consumer_key,consumer_secret,access_token,access_token_secret, sleep_on_rate_limit=True)
+api = twitter.Api(consumer_key,consumer_secret,access_token,access_token_secret, sleep_on_rate_limit=True, result_type="recent")
 
 #-----------------------------------------------------------------------
 # create twitter API object
@@ -41,7 +41,7 @@ while CallApiFirst < MaximumCalls:
 ###-----------------------------------------------------------------------
     for tweets in search:
         print(tweets)
-        time.sleep(1.05)
+        time.sleep(0.05)
         CallApiFirst += 1        
 		
 
