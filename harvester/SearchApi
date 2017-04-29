@@ -24,20 +24,30 @@ api = twitter.Api(consumer_key,consumer_secret,access_token,access_token_secret,
 # This search query will search for all australian Tweets in English Language.
 # This returns Tweets which are Australian but may not have location enabled.
 # At the end we require the English Language statuses for sentiment analysis
+# To do Task is to pass these tweets to the Database rather than just Printing
 #-----------------------------------------------------------------------
 
-search = api.GetSearch(geocode=[-29.53522956294844, 133.76953125, "2162.719km"], result_type="recent")
-
-#-----------------------------------------------------------------------
-# This is an Endless Loop. Will search for Australian Tweets Endlessly 
-# To do Task is to send these tweets to the Database
-# To do Exceptions 
-# To Do Ignore the Cached Tweets
-#-----------------------------------------------------------------------
-while True:
+def searchApi():
+    search = api.GetSearch(geocode=[-29.53522956294844, 133.76953125, "2162.719km"], count=100, result_type="mixed", lang="en")
     for tweets in search:
         print(tweets)
-        time.sleep(0.1)
+        
+#-----------------------------------------------------------------------
+# Scheduler to execute the Twitter search every 30 seconds
+#-----------------------------------------------------------------------
+         
+schedule.every(0.5).minutes.do(searchApi)
+
+#-----------------------------------------------------------------------
+# Loop and sleep time
+#-----------------------------------------------------------------------
+
+try:
+    while True:
+     schedule.run_pending()
+     time.sleep(0.05)
+except twitter.error.TwitterError as err:
+    print(err.message)
 		
 
 
