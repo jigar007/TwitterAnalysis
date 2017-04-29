@@ -31,6 +31,8 @@ search = api.GetSearch(geocode=[-29.53522956294844, 133.76953125, "2162.719km"],
 #-----------------------------------------------------------------------
 # This is an Endless Loop. Will search for Australian Tweets Endlessly 
 # To do Task is to send these tweets to the Database
+# To do Exceptions 
+# To Do Ignore the Cached Tweets
 #-----------------------------------------------------------------------
 while True:
     for tweets in search:
