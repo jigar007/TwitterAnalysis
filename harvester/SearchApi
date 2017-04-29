@@ -4,6 +4,7 @@ import twitter
 import requests
 import json
 import time
+import schedule
 
 #-----------------------------------------------------------------------
 # Twitter API credentials 
@@ -39,7 +40,7 @@ def searchApi():
 schedule.every(0.5).minutes.do(searchApi)
 
 #-----------------------------------------------------------------------
-# Loop and sleep time
+# Infinte Loop, the Search Api will be invoked every 30 seconds
 #-----------------------------------------------------------------------
 
 try:
