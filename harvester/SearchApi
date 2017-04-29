@@ -4,7 +4,6 @@ import twitter
 import requests
 import json
 import time
-from twitter.ratelimit import RateLimit
 
 #-----------------------------------------------------------------------
 # Twitter API credentials 
@@ -19,30 +18,24 @@ consumer_secret = "xmZ5NpbbqnLFsWCB295B1QBrm7KocRNc5LLPtWA4hVbUldlZAS"
 # create twitter API object
 #-----------------------------------------------------------------------
 
-api = twitter.Api(consumer_key,consumer_secret,access_token,access_token_secret, sleep_on_rate_limit=True, result_type="recent")
+api = twitter.Api(consumer_key,consumer_secret,access_token,access_token_secret, sleep_on_rate_limit=True)
 
 #-----------------------------------------------------------------------
-# create twitter API object
+# This search query will search for all australian Tweets in English Language.
+# This returns Tweets which are Australian but may not have location enabled.
+# At the end we require the English Language statuses for sentiment analysis
 #-----------------------------------------------------------------------
-CallApiFirst = 0
-MaximumCalls = 100000
+
+search = api.GetSearch(geocode=[-29.53522956294844, 133.76953125, "2162.719km"], result_type="recent")
 
 #-----------------------------------------------------------------------
-# Looping through Maximum Calls
+# This is an Endless Loop. Will search for Australian Tweets Endlessly 
+# To do Task is to send these tweets to the Database
 #-----------------------------------------------------------------------
-while CallApiFirst < MaximumCalls:
-###-----------------------------------------------------------------------
-### Search Api
-###-----------------------------------------------------------------------
-    search = api.GetSearch(geocode=[-29.53522956294844, 133.76953125, "2162.719km"], count=500)
-    
-###-----------------------------------------------------------------------
-### create twitter API object
-###-----------------------------------------------------------------------
+while True:
     for tweets in search:
         print(tweets)
-        time.sleep(0.05)
-        CallApiFirst += 1        
+        time.sleep(0.1)
 		
 
 
