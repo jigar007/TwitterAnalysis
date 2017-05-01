@@ -49,6 +49,3 @@ try:
      time.sleep(0.05)
 except twitter.error.TwitterError as err:
     print(err.message)
-		
-
-
