@@ -4,8 +4,8 @@
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
-# from tweepy.utils import import_simplejson
-# json = import_simplejson()
+from tweepy.utils import import_simplejson
+json = import_simplejson()
 ##################################################
 
 # tweepy error handling ##########################
@@ -18,7 +18,7 @@ from twilio.rest import Client
 
 # other necessary modules ########################
 import requests
-import sys
+from pymongo import MongoClient
 ##################################################
 
 # Variables that contains the user credentials to access Twitter API ######################################
@@ -47,18 +47,23 @@ jig_from_num = "+61409738448"
 
 ############################################################################################################
 
-# couchDB connection string and other constants ############################################################
+# mongodb connection string and other constants ############################################################
 # master instance -> 115.146.95.71
-url = 'http://smoky:smoky@0.0.0.0:5984/rawtweetsdb'
-headers = {'Content-Type': 'application/json'}
+# url = 'http://smoky:smoky@0.0.0.0:5984/rawtweetsdb'
+# headers = {'Content-Type': 'application/json'}
+mongo_client = MongoClient('localhost', 27017)
+raw_db = mongo_client['rawtweetsdb']
+collection = raw_db['raw-collection']
 ############################################################################################################
 
 
 # This is a basic listener that just prints received tweets to stdout.
 class StdOutListener(StreamListener):
     def on_data(self, json_data):
+        tweet = json.loads(json_data)
+        collection.insert_one(tweet)
         # print(json_data)
-        requests.post(url=url, data=json_data, headers=headers)
+        # requests.post(url=url, data=json_data, headers=headers)
         return True
 
     def on_error(self, status):
