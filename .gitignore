@@ -1,0 +1,40 @@
+# IDE generated folders #
+#########################
+.idea
+
+# Compiled sources #
+####################
+
+*.exe
+*.o
+*.so
+*.out
+*.tex
+*.lol
+*.sty
+*.pyo
+*.pyc
+*.aux
+
+# Packages #
+############
+
+*.7z
+*.zip
+*.rar
+*.tar
+*.gz
+
+# OS generated files #
+######################
+
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+.Trashes
+
+# NODE dependencies #
+#####################
+
+cloudstoriesapp/node_modules
