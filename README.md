@@ -33,3 +33,7 @@
 * suburbs where sports are played most vs health of people in that suburb
 * collect shopping tweets from a suburb, find number of malls in that suburb, find how wealthy people of that suburb are
 * (later) using search API find the sentiment of people for the last federal elections
+
+### Front End Dev
+* Look into Bootswatch (a good bootstrap templating system)
+* Need to discuss about the models we are going to use for each story
