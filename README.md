@@ -30,6 +30,21 @@
 
 ### Twitter Stories
 * Tourist places visited by people (aurin) and collect tweets from people in those places and use sentiment analysis to find out popular places
+
 * collect shopping tweets from a suburb, find number of malls in that suburb, find how wealthy people of that suburb are
+
+<<<<<<< HEAD
 * suburb where sports are played most vs health of people in that suburb
 * (later) using search API find the sentiment of people for the last federal elections
+=======
+* (later) using search API find the sentiment of people for the last federal elections
+
+### Front End Dev 
+Logged in as Jigar ThakkarProject Untitled Project2017-Mar-10 20:28
+Help
+
+MyAURIN
+
+* Look into Bootswatch (a good bootstrap templating system)
+* Need to discuss about the models we are going to use for each story
+>>>>>>> d19316f18e738d691615be6421dc430f9d8bb1e1
