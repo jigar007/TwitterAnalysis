@@ -29,10 +29,9 @@
 * Use these keys to gain access to the instance which runs couchdb
 
 ### Twitter Stories
-* Tourist places visited by people (aurin) and collect tweets from people in those places and use sentiment analysis to find out popular places
-* suburbs where sports are played most vs health of people in that suburb
-* collect shopping tweets from a suburb, find number of malls in that suburb, find how wealthy people of that suburb are
-* (later) using search API find the sentiment of people for the last federal elections
+* marital status (AURIN) vs happiness in that suburb (twitter)
+* popularity of tv shows (twitter) vs socio-economic metrics of suburb (AURIN)
+* number of news stories (twitter) vs socio-economic metrics of suburb (AURIN)
 
 ### Front End Dev
 * Look into Bootswatch (a good bootstrap templating system)
