@@ -1,0 +1,5 @@
+{
+  "shows": "'#thevoiceau' OR '#qanda' OR '#fourcorners' OR '#acurrentaffair' OR '#channel7' OR '#mkr' OR 'abc' OR '#channel9' OR '#channelten' OR '#abcnews' OR '#theproject' OR '#masterchefau' OR '#houserules' OR '#thekick'",
+  "health": "'#nofat' OR '#healthy' OR '#fit' OR '#fitness' OR '#gym' OR '#motivation' OR '#bodybuilding' OR '#healthyeating' OR '#healthcare' OR '#burger' OR '#hamburger' OR '#foodporn' OR '#delicious' OR '#yum' OR '#foods' OR '#fried' OR '#fitspo' OR '#eatclean'",
+  "politics": "'#auspol' OR '457'"
+}
