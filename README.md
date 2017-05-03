@@ -36,3 +36,6 @@
 ### Front End Dev
 * Look into Bootswatch (a good bootstrap templating system)
 * Need to discuss about the models we are going to use for each story
+
+### Google Maps API key
+* AIzaSyCx0sTN8MQBRiWt3xQ3F60d2zJk7nyjjlU
