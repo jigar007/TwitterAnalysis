@@ -2,13 +2,11 @@
 #########################
 .idea
 
-# Compiled sources #
+# Compiled sources (LaTex)#
 ####################
 
-*.exe
 *.o
 *.so
-*.out
 *.tex
 *.lol
 *.sty

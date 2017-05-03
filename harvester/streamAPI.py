@@ -53,7 +53,7 @@ jig_from_num = "+61409738448"
 # headers = {'Content-Type': 'application/json'}
 mongo_client = MongoClient('localhost', 27017)
 raw_db = mongo_client['rawtweetsdb']
-collection = raw_db['raw-collection']
+collection = raw_db['rawTweet']
 ############################################################################################################
 
 

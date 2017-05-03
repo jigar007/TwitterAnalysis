@@ -1,6 +1,7 @@
 ### This readme file contains instructions on how to get the web-app running on your machine
 + __Please create your own branch before starting the development__
 +   Pull the latest changes
++   use _node install -g `nodemon`_ to install nodemon package
 +   The 'cloudstoriesapp' root folder contains the following
     1.    _angular-src_ contains front-end
         -    The _app_ folder contains all the components for the front-end

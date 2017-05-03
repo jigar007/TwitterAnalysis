@@ -35,8 +35,9 @@
 
 <<<<<<< HEAD
 * suburb where sports are played most vs health of people in that suburb
+
 * (later) using search API find the sentiment of people for the last federal elections
-=======
+
 * (later) using search API find the sentiment of people for the last federal elections
 
 ### Front End Dev 
