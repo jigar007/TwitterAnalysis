@@ -29,6 +29,7 @@
 * Use these keys to gain access to the instance which runs couchdb
 
 ### Twitter Stories
+<<<<<<< HEAD
 * Tourist places visited by people (aurin) and collect tweets from people in those places and use sentiment analysis to find out popular places
 
 * collect shopping tweets from a suburb, find number of malls in that suburb, find how wealthy people of that suburb are
@@ -37,6 +38,11 @@
 * suburb where sports are played most vs health of people in that suburb
 
 * (later) using search API find the sentiment of people for the last federal elections
+=======
+* marital status (AURIN) vs happiness in that suburb (twitter)
+* popularity of tv shows (twitter) vs socio-economic metrics of suburb (AURIN)
+* number of news stories (twitter) vs socio-economic metrics of suburb (AURIN)
+>>>>>>> 9e60837d502f9b2927e62236a7e06a1c66486f81
 
 * (later) using search API find the sentiment of people for the last federal elections
 
@@ -48,4 +54,10 @@ MyAURIN
 
 * Look into Bootswatch (a good bootstrap templating system)
 * Need to discuss about the models we are going to use for each story
+<<<<<<< HEAD
 >>>>>>> d19316f18e738d691615be6421dc430f9d8bb1e1
+=======
+
+### Google Maps API key
+* AIzaSyCx0sTN8MQBRiWt3xQ3F60d2zJk7nyjjlU
+>>>>>>> 9e60837d502f9b2927e62236a7e06a1c66486f81

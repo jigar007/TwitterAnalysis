@@ -17,7 +17,6 @@ from twilio.rest import Client
 ##################################################
 
 # other necessary modules ########################
-import requests
 from pymongo import MongoClient
 ##################################################
 
@@ -52,7 +51,7 @@ jig_from_num = "+61409738448"
 # url = 'http://smoky:smoky@0.0.0.0:5984/rawtweetsdb'
 # headers = {'Content-Type': 'application/json'}
 mongo_client = MongoClient('localhost', 27017)
-raw_db = mongo_client['rawtweetsdb']
+raw_db = mongo_client['rawtweetsdbLive']
 collection = raw_db['rawTweet']
 ############################################################################################################
 
@@ -92,15 +91,6 @@ if __name__ == '__main__':
     except TweepError as te:
         print(te.reason)
         notify_sms(msg=te.reason)
-    except requests.exceptions.Timeout as timeout:
-        print(timeout)
-        notify_sms(msg=timeout)
-    except requests.exceptions.ConnectionError as ce:
-        print(ce)
-        notify_sms(msg=ce)
-    except requests.exceptions.RequestException as re:
-        print(re)
-        notify_sms(msg=re)
     except Exception as e:
         print('Exception: {0}'.format(e))
         notify_sms(msg=e)
