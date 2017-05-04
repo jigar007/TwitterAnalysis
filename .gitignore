@@ -8,10 +8,10 @@
 *.o
 *.so
 *.lol
-*.sty
 *.pyo
 *.pyc
 *.aux
+/Report/main.pdf
 
 # Packages #
 ############
