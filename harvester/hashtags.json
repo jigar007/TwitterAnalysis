@@ -1,5 +1,5 @@
 {
-  "shows": "#thevoiceau OR #qanda OR #fourcorners OR #acurrentaffair OR #channel7 OR #mkr OR #abc OR #channel9 OR #channelten OR #abcnews OR #theproject OR #masterchefau OR #houserules OR #thekick",
-  "health": "#nofat OR #healthy OR #fit OR #fitness OR #gym OR #motivation OR #bodybuilding OR #healthyeating OR #healthcare OR #burger OR #hamburger OR #foodporn OR #delicious OR #yum OR #foods OR #fried OR #fitspo OR #eatclean OR #yoga OR #crossfit OR #fitnessfreak OR #junk OR #sweat OR sweat",
-  "news": "#auspol OR 457 OR #climate OR #budget OR #budget2017 OR #gonski OR #HECS OR #UniFees OR #housingcrisis OR #housingaffordability OR #trump OR trump"
+  "shows": "#thevoiceau OR #qanda OR #fourcorners OR #acurrentaffair OR #channel7 OR #mkr OR #abc OR #channel9 OR #channelten OR #abcnews OR #theproject OR #masterchefau OR #houserules OR #thekick OR #australia OR #seasons OR #season OR #iloveaustralia OR #cricket OR #7news OR #todaytonight OR #9news OR #homeandaway OR #thechaseaus OR #theweekly OR #abc730 OR #9millionairehotseat OR #aussiepropertyflippers OR #tennews OR #australianstory OR #mediawatch",
+  "health": "#nofat OR #healthy OR #fit OR #fitness OR #gym OR #workout OR #motivation OR #bodybuilding OR #healthyeating OR #healthcare OR #burger OR #hamburger OR #foodporn OR #delicious OR #yummy OR #foods OR #fried OR #fitspo OR #eatclean OR #yoga OR #crossfit OR #fitnessfreak OR #junk OR #sweat OR sweat",
+  "news": "#auspol OR 457 OR #climate OR #budget OR #budget2017 OR #gonski OR #HECS OR #UniFees OR #housingcrisis OR #housingaffordability OR #trump OR trump OR #buckinghampalace OR #ausenate OR #fairfax OR #fairgofairfax OR #journos OR fairfax OR #keepcommunityradio OR #palace OR #buckingham"
 }
