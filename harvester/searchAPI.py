@@ -146,7 +146,7 @@ if __name__ == '__main__':
                     print("Downloaded {} tweets \n{} \n{}".format(tweet_count, received_tweets[0].id, max_ID))
             except TweepError as te:
                 print(te.reason)
-                # notify_sms(te.reason)
+                notify_sms(te.reason)
             except Exception as e:
                 print(e)
-                # notify_sms(e)
+                notify_sms(e)

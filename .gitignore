@@ -3,16 +3,15 @@
 .idea
 
 # Compiled sources (LaTex)#
-####################
+###########################
 
 *.o
 *.so
-*.tex
 *.lol
-*.sty
 *.pyo
 *.pyc
 *.aux
+/Report/main.pdf
 
 # Packages #
 ############
