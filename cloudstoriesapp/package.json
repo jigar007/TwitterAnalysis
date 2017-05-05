@@ -8,7 +8,6 @@
     "start": "node app"
   },
   "dependencies": {
-    "angular2-google-maps": "^0.17.0",
     "body-parser": "*",
     "cors": "*",
     "express": "*",
@@ -20,5 +19,6 @@
   },
   "author": "Shivank",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/cloudytweets/twitter_on_cloud#readme"
+  "homepage": "https://bitbucket.org/cloudytweets/twitter_on_cloud#readme",
+  "devDependencies": {}
 }
