@@ -34,4 +34,4 @@ Thumbs.db
 # NODE dependencies #
 #####################
 
-cloudstoriesapp/node_modules
+/cloudstoriesapp/node_modules

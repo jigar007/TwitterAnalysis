@@ -67,7 +67,7 @@ class StdOutListener(StreamListener):
 
     def on_error(self, status):
         print(status)
-        notify_sms(msg=te.reason)
+        # notify_sms(msg=te.reason)
         return False
 
 
@@ -90,7 +90,7 @@ if __name__ == '__main__':
         stream.filter(locations=geobox_australia)
     except TweepError as te:
         print(te.reason)
-        notify_sms(msg=te.reason)
+        # notify_sms(msg=te.reason)
     except Exception as e:
         print('Exception: {0}'.format(e))
-        notify_sms(msg=e)
+        # notify_sms(msg=e)

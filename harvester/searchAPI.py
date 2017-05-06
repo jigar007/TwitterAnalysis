@@ -27,6 +27,8 @@ json = import_simplejson()
 # consumer_secret = "9y6QrPh8XRFDKyqAQZHM2uaLoG5LSly4BECJOuJ0LxZXLXdVR4"
 # consumer_key = "HCXJC9Jg97wp08d1aBHFuvSj9"
 # consumer_secret = "ackWKhV5seM5cVIyHjUBWs7DeYJvq1M50o93lz2djoXVGY1CQq"
+# consumer_key = "2Akcp0bkBnpgr4nMpOaIPOVa0"
+# consumer_secret = "xmZ5NpbbqnLFsWCB295B1QBrm7KocRNc5LLPtWA4hVbUldlZAS"
 #################################################################################
 
 # Initializing objects for twilio rest client to send SMS notifications ##########################
@@ -78,12 +80,17 @@ if __name__ == '__main__':
             query = dict_content[story_name]
         except FileNotFoundError as fnf:
             # notify_sms(format(fnf))
+            print(fnf)
             sys.exit(1)
         except ValueError as ve:
             # notify_sms(ve)
+            print(ve)
             sys.exit(1)
+        except KeyError as ke:
+            print("No key found named: {}".format(ke))
         except Exception as e:
             # notify_sms(e)
+            print(e)
             sys.exit(1)
         #############################################
 
@@ -146,7 +153,7 @@ if __name__ == '__main__':
                     print("Downloaded {} tweets \n{} \n{}".format(tweet_count, received_tweets[0].id, max_ID))
             except TweepError as te:
                 print(te.reason)
-                notify_sms(te.reason)
+                # notify_sms(te.reason)
             except Exception as e:
                 print(e)
-                notify_sms(e)
+                # notify_sms(e)
