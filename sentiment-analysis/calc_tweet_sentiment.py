@@ -1,14 +1,8 @@
 from textblob import TextBlob
 import re
 from emoji import EMOJIS
-import json
+import sys
 from pymongo import MongoClient
-
-# mongodb connection string ##################
-mongo_client = MongoClient('115.146.95.71', 27017)
-raw_db = mongo_client['rawtweetsdbLive']
-collection = raw_db['test']
-##############################################
 
 
 def preprocesstweets(rawtext):
@@ -31,7 +25,7 @@ def preprocesstweets(rawtext):
     return tweet
 
 
-def calcSentiment(tweet):
+def calc_sentiment(tweet):
     tweet = TextBlob(tweet)
 
     if tweet.sentiment.polarity < 0:
@@ -45,14 +39,27 @@ def calcSentiment(tweet):
 
 
 def main():
-    for raw_tweet in collection.find():
-        # first pre-process the text in the tweet and find out it's sentiment
-        sentiment = calcSentiment(preprocesstweets(raw_tweet["text"]))
-        # create a new property for that document which stores the sentiment
-        collection.update({"_id": raw_tweet["_id"]},
-                          {"$set": {"tweet_sentiment": sentiment}}
-                          )
-        # print("RAWTEXT: {}\nPROCTEXT: {}\nSENTIMENT: {}\n".format(raw_tweet["text"],proc_text,sentiment))
+    if len(sys.argv) < 2:
+        print("Please enter the collection on which the sentiment will run")
+        sys.exit(1)
+    else:
+        coll = sys.argv[1]
+        # mongodb connection string ##################
+        # node IP -> 115.146.95.71
+        mongo_client = MongoClient('localhost', 27017)
+        raw_db = mongo_client['rawtweetsdbLive']
+        collection = raw_db[coll]
+        ##############################################
+
+        for raw_tweet in collection.find():
+            # first pre-process the text in the tweet and find out it's sentiment
+            sentiment = calc_sentiment(preprocesstweets(raw_tweet["text"]))
+            # create a new property for that document which stores the sentiment
+            collection.update({"_id": raw_tweet["_id"]},
+                              {"$set": {"tweet_sentiment": sentiment}}
+                              )
+            # print("RAWTEXT: {}\nPROCTEXT: {}\nSENTIMENT: {}\n".format(raw_tweet["text"],proc_text,sentiment))
+        print("Update complete!")
 
 if __name__ == '__main__':
     main()
