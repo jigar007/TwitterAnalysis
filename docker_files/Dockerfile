@@ -6,7 +6,6 @@ RUN pip install appdirs==1.4.3
 RUN pip install click==6.7
 RUN pip install decorator==4.0.11
 RUN pip install docutils==0.13.1
-RUN pip install geocoder==1.22.4
 RUN pip install jmespath==0.9.2
 RUN pip install nltk==3.2.2
 RUN pip install oauthlib==2.0.2
