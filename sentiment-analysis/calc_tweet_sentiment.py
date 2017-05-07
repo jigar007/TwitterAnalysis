@@ -46,14 +46,17 @@ def main():
         coll = sys.argv[1]
         # mongodb connection string ##################
         # node IP -> 115.146.95.71
+        username = "smoky"
+        password = "sm0ky$"
         mongo_client = MongoClient('localhost', 27017)
         raw_db = mongo_client['rawtweetsdbLive']
+        raw_db.authenticate(username, password, mechanism='SCRAM-SHA-1', source='admin')
         collection = raw_db[coll]
         ##############################################
 
         for raw_tweet in collection.find():
             # first pre-process the text in the tweet and find out it's sentiment
-            sentiment = calc_sentiment(preprocesstweets(raw_tweet["text"]))
+            sentiment = calc_sentiment(preprocesstweets(raw_tweet["value"]["text"]))
             # create a new property for that document which stores the sentiment
             collection.update({"_id": raw_tweet["_id"]},
                               {"$set": {"tweet_sentiment": sentiment}}

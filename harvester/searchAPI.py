@@ -99,11 +99,14 @@ if __name__ == '__main__':
         api = API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
         ########################################################################
 
-        # mongodb connection string ##################
+        # mongodb connection string ####################################
+        username = "smoky"
+        password = "sm0ky$"
         mongo_client = MongoClient('localhost', 27017)
         raw_db = mongo_client['rawtweetsdbLive']
+        raw_db.authenticate(username, password, mechanism='SCRAM-SHA-1', source='admin')
         collection = raw_db[story_name]
-        ##############################################
+        ################################################################
 
         tweet_count = 0
         print("Begin retrieving tweets")

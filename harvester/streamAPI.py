@@ -50,8 +50,11 @@ jig_from_num = "+61409738448"
 # master instance -> 115.146.95.71
 # url = 'http://smoky:smoky@0.0.0.0:5984/rawtweetsdb'
 # headers = {'Content-Type': 'application/json'}
+username = "smoky"
+password = "sm0ky$"
 mongo_client = MongoClient('localhost', 27017)
 raw_db = mongo_client['rawtweetsdbLive']
+raw_db.authenticate(username, password, mechanism='SCRAM-SHA-1', source='admin')
 collection = raw_db['rawTweet']
 ############################################################################################################
 
