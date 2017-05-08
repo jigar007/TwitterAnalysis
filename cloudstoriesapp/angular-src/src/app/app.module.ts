@@ -9,17 +9,18 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { TourismComponent } from './components/tourism/tourism.component';
-import { ShoppingComponent } from './components/shopping/shopping.component';
+import { NewsComponent } from './components/news/news.component';
+import { ShowsComponent } from './components/shows/shows.component';
 import { HealthComponent } from './components/health/health.component';
-import { ValidateService } from './services/validate.service';
+
+import { QueryService } from './services/query.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'navbar', component: NavbarComponent },
-  { path: 'tourism', component: TourismComponent },
-  { path: 'shopping', component: ShoppingComponent },
+  { path: 'news', component: NewsComponent },
+  { path: 'shows', component: ShowsComponent },
   { path: 'health', component: HealthComponent }
 ];
 
@@ -27,11 +28,11 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     DashboardComponent,
-    NavbarComponent,    
+    NavbarComponent,
     HomeComponent,
-    TourismComponent,
-    ShoppingComponent,
-    HealthComponent
+    NewsComponent,
+    ShowsComponent,
+    HealthComponent,    
   ],
   imports: [
     BrowserModule,
@@ -42,7 +43,7 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyCx0sTN8MQBRiWt3xQ3F60d2zJk7nyjjlU'
     })
   ],
-  providers: [ValidateService],
+  providers: [QueryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

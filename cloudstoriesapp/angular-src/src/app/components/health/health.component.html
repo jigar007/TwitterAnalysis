@@ -1,6 +1,4 @@
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
-
-<sebm-google-map [latitude]="lat" [longitude]="lng">
-  <sebm-google-map-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="false"></sebm-google-map-marker>
+<sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <sebm-google-map-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></sebm-google-map-marker>
+  <sebm-map-polygon [paths]="paths" [fillColor]="'#FF0000'" [strokeColor]="'#FF0000'" [fillOpacity]="0.4" [strokeWeight]="1"></sebm-map-polygon>
 </sebm-google-map>

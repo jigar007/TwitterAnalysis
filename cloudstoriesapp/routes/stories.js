@@ -2,19 +2,19 @@
 // we can have index to differenct stories here on this page
 const express = require('express');
 const router = express.Router();
-const User = require('../models/story');
+const User = require('../models/suburbs');
 
 // different STORIES
-router.get('/tourism', (req, res, next) => {
-    res.send('inside tourism story!');
+router.get('/news', (req, res) => {
+    res.json({'name':'Shivank'});
 });
 
-router.get('/health', (req, res, next) => {
-    res.send('inside health story!');
+router.get('/health', (req, res) => {
+    res.json({'name':'Shivank'});
 });
 
-router.get('/shopping', (req, res, next) => {
-    res.send('inside shopping story!');
+router.get('/shows', (req, res) => {
+    res.json({'name':'Shivank'});
 });
 // end of different stories routes
 
