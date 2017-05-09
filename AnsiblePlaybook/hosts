@@ -1,13 +1,15 @@
 #The cloud wide list of instances
+[ap]
+115.146.93.124
 
-[master_server]
-#smoky
-115.146.95.71
+[test]
+# i-2f0cba55
+115.146.93.68 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=project_key.key
 
 [replication_servers]
-# i-2f0cba55
-115.146.93.68
 # i-2c4d989a
-115.146.93.246
+115.146.93.246 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=project_key.key
+
+[doc]
 # i-e0323cd2
-115.146.93.210
+115.146.93.210 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=project_key.key
