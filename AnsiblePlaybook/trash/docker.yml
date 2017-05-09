@@ -1,0 +1,18 @@
+---
+- hosts: ap
+  sudo: yes
+  tasks:
+    -name: uninstall previos version
+      command: sudo apt-get remove docker docker-engine
+    -name: extra packages
+      command:sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+    -name: step 2
+     command:curl -fsSL https://storebits.docker.com/ee/ubuntu/sub-230cb1f7-2a6c-4d0a-8506-886041e70465/gpg | sudo apt-key add -
+    -name: stwp 3
+     command:sudo add-apt-repository "deb [arch=amd64] https://storebits.docker.com/ee/ubuntu/sub-230cb1f7-2a6c-4d0a-8506-886041e70465 $(lsb_release -cs) stable-17
+    -name: update repository
+     command:sudo apt-get update
+    -name: install docker
+     command:sudo apt-get install docker-ee
+    -name: hello world
+     command:sudo docker run hello-world
