@@ -1,27 +1,46 @@
 const mongoose = require('mongoose');
-const config = require('../config/database');
+// const config = require('../config/database');
 
-// Story Schema
-// for now these were on the top of my head
-// we'll update our schema after a group meeting
-const polygonSchema = mongoose.Schema({    
-    tweet_sentiment: String,
-    value: {
-        text: String,
-        co: {
-            coordinates: Array,
-            type: String
-        }
-    }
+// Schema for each story
+const mainSchema = mongoose.Schema({
+    geometry: {},
+    latlng: [],
+    properties: {},
+    senti: {},
+    total_tweet: Number,
+    type: String
 });
 
-const Polygon = module.exports.Polygon = mongoose.model('news_pros', polygonSchema);
+const NewsModel = mongoose.model('polygons_news', mainSchema);
+const HealthModel = mongoose.model('health_data', mainSchema);
+const ShowsModel = mongoose.model('polygons_shows', mainSchema);
+const MiscModel = mongoose.model('polygons_rawtweets2', mainSchema);
 
-// module.exports.getStoryById = function(id, callback) {
-//     Polygon.findbyId(id, callback);
-// };
+module.exports.getNewsData = function (callback) {
+    NewsModel
+    .find({}, { "_id": 0 })
+    .sort({total_tweet: -1})
+    .exec(callback);
+}
 
-// module.exports.getStoryByTitle = function(title, callback) {
-//     const query = {title: title};
-//     Polygon.findOne(query, callback);
-// };
+module.exports.getHealthData = function (callback) {
+    HealthModel
+    .find({})
+    .sort({total_tweet: -1})
+    .exec(callback);
+}
+
+module.exports.getShowsData = function (callback) {
+    NewsModel
+    .find({}, { "_id": 0 })
+    .sort({total_tweet: -1})
+    .exec(callback);
+}
+
+module.exports.getMiscData = function (callback) {
+    MiscModel
+    .find({}, { "_id": 0 })
+    .sort({total_tweet: -1})
+    .limit(250)
+    .exec(callback);
+}

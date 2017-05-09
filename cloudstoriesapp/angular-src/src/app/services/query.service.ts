@@ -8,8 +8,23 @@ export class QueryService {
 
   constructor(private http: Http) { }
 
-  sampleJson() {
-      return this.http.get('http://localhost:3000/stories/health')
+  getNewsData() {
+      return this.http.get('http://localhost:3000/stories/newsData')
+          .map(res => res.json());
+  }
+
+  getHealthData() {
+      return this.http.get('http://localhost:3000/stories/healthData')
+          .map(res => res.json());
+  }
+
+  getShowsData() {
+      return this.http.get('http://localhost:3000/stories/showsData')
+          .map(res => res.json());
+  }
+
+  getMiscData() {
+      return this.http.get('http://localhost:3000/stories/miscData')
           .map(res => res.json());
   }
 

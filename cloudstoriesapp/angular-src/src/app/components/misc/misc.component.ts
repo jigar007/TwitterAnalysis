@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { LatLngLiteral } from 'angular2-google-maps/core';
 import { QueryService } from '../../services/query.service';
+import { LatLngLiteral } from 'angular2-google-maps/core';
 
 @Component({
-    selector: 'app-health',
-    templateUrl: './health.component.html',
-    styleUrls: ['./health.component.css']
+    selector: 'app-misc',
+    templateUrl: './misc.component.html',
+    styleUrls: ['./misc.component.css']
 })
-
-export class HealthComponent implements OnInit {
+export class MiscComponent implements OnInit {
 
     //class variables
     lat: Number = -37.8136;
@@ -18,7 +17,7 @@ export class HealthComponent implements OnInit {
     markers: Object[] = this.fetchMarkers();
     visible: Boolean = false;
 
-    constructor(private query: QueryService) {}
+    constructor(private query: QueryService) { }
 
     ngOnInit() {
     }
@@ -26,7 +25,7 @@ export class HealthComponent implements OnInit {
     //class methods
     fetchPolygons(): any {
         let res = [];
-        this.query.getHealthData().subscribe(geometries => {
+        this.query.getMiscData().subscribe(geometries => {
             for (let i = 0; i < geometries.length; i++) {
                 let single_polygon: LatLngLiteral[] = [];
                 if (geometries[i]["geometry"]["type"] === "Polygon") {
@@ -47,19 +46,14 @@ export class HealthComponent implements OnInit {
 
     fetchMarkers(): Object[] {
         let res: Object[] = [];
-        this.query.getHealthData().subscribe(data => {
-            for (let coords of data) {
-                for (let obj of coords["latlng"]) {
+        this.query.getMiscData().subscribe(coordinates => {
+            for (let coords of coordinates) {
+                for (let obj of coords["latlng"]) {                    
                     res.push(obj);
                 }
             }
         });
-        console.log(res);
         return res;
-    }
-
-    polygonClicked(reg: String) {
-        console.log(reg);
     }
 
     changeMarkerStatus(elem): void {
@@ -88,5 +82,5 @@ export class HealthComponent implements OnInit {
             this.lng = 144.9631;
         }
     }
-    
+
 }

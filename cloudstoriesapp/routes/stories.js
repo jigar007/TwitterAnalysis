@@ -1,20 +1,33 @@
 // this is the route page for stories.
-// we can have index to differenct stories here on this page
+// we can have index to different stories here on this page
 const express = require('express');
 const router = express.Router();
-const User = require('../models/suburbs');
+const Models = require('../models/suburbs');
+const mongoose = require('mongoose');
 
 // different STORIES
-router.get('/news', (req, res) => {
-    res.json({'name':'Shivank'});
+router.get('/newsData', (req, res) => {
+    Models.getNewsData((err, data) => {
+        res.json(data);
+    });
 });
 
-router.get('/health', (req, res) => {
-    res.json({'name':'Shivank'});
+router.get('/healthData', (req, res) => {
+    Models.getHealthData((err, data) => {
+        res.json(data);
+    });
 });
 
-router.get('/shows', (req, res) => {
-    res.json({'name':'Shivank'});
+router.get('/showsData', (req, res) => {
+    Models.getShowsData((err, data) => {
+        res.json(data);
+    });
+});
+
+router.get('/miscData', (req, res) => {
+    Models.getMiscData((err, data) => {
+        res.json(data);
+    });
 });
 // end of different stories routes
 

@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NewsComponent } from './components/news/news.component';
 import { ShowsComponent } from './components/shows/shows.component';
 import { HealthComponent } from './components/health/health.component';
+import { MiscComponent } from './components/misc/misc.component';
 
 import { QueryService } from './services/query.service';
 
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
   { path: 'navbar', component: NavbarComponent },
   { path: 'news', component: NewsComponent },
   { path: 'shows', component: ShowsComponent },
-  { path: 'health', component: HealthComponent }
+  { path: 'health', component: HealthComponent },
+  { path: 'misc', component: MiscComponent }
 ];
 
 @NgModule({
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
     HomeComponent,
     NewsComponent,
     ShowsComponent,
-    HealthComponent,    
+    HealthComponent,
+    MiscComponent,    
   ],
   imports: [
     BrowserModule,

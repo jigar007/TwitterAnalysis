@@ -15,14 +15,17 @@ const url = 'mongodb://'+config.username+':'+config.password+'@'+config.host+':'
 mongoose.connect(url);
 
 // a listener for database connected event
+
+mongoose.Promise = global.Promise;
+
 mongoose.connection.on('connected', () => {
-    console.log('Connected to database ' + config.database.substr(config.database.lastIndexOf('/') + 1));
-    // suburbs.Polygon.findOne({}, { "value": 1 }, (err, data) => {
+    console.log('Connected to database ' + config.database.substr(config.database.lastIndexOf('/') + 1));    
+    // suburbs.getNewsData((err, data) => {
     //     if (err) {
-    //         console.log("An error has occurred while trying to execute this request\n" + '"' + err.errmsg + '"')
+    //         console.log(err.errmsg);
     //     }
     //     else {
-    //         console.log(data.value.text);
+    //         console.log(data);
     //     }
     // });
 });
