@@ -1,8 +1,5 @@
 FROM node:boron
 
-# Update
-RUN apk add --update nodejs
-
 # Install app dependencies
 COPY package.json /cloudstoriesapp/package.json
 RUN cd cloudstoriesapp/; npm install
