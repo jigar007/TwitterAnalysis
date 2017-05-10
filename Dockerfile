@@ -1,12 +1,14 @@
 FROM node:boron
 
+# Update
+RUN apk add --update nodejs
+
+# Install app dependencies
+COPY package.json /cloudstoriesapp/package.json
+RUN cd cloudstoriesapp/; npm install
 
 # Make port 80 available to the world outside this container
 EXPOSE 4200
 EXPOSE 3000
 
-ADD cloudstoriesapp /cloudstoriesapp
-
-WORKDIR ~/cloudstoriesapp
-
-CMD nodemon;cd angular-src;ng serve
+CMD [“nodemon”,”angular-src/ng serve”]
