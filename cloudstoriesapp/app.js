@@ -6,7 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 
-const suburbs = require('./models/suburbs')
+const suburbs = require('./models/model')
 
 // specifying the connection for our database 
 // which is stored in a config file

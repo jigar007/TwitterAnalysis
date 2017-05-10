@@ -1,30 +1,72 @@
-<div class="col-lg-1 btn-group-vertical">
-    <button type="button" class="btn btn-primary" (click)="changeMarkerStatus($event.target)">Show Markers</button>
-    <button type="button" class="btn btn-warning" (click)="changeCity($event.target)">Sydney</button>
+<div class="col-lg-2 btn-group-vertical">
+  <div class="panel panel-primary">    
+    <div class="list-group">
+        <a class="list-group-item" (click)="changeMarkerStatus($event.target)">Show Markers</a>
+        <a class="list-group-item" (click)="changeCity($event.target)">Go to Sydney</a>
+    </div>
+  </div>
 </div>
 <div class="col-lg-7">
-  <sebm-google-map
-    [latitude]="lat"
-    [longitude]="lng"
-    [zoom]="zoom"
-    [disableDefaultUI]="true">
-    <sebm-google-map-marker
-      *ngFor="let m of markers"
-      [latitude]="m.lat"
-      [longitude]="m.lng"
-      [visible]="visible">
-      <sebm-google-map-info-window [disableAutoPan]="true">{{m.senti}}</sebm-google-map-info-window>
-    </sebm-google-map-marker>
-    <sebm-map-polygon
-      *ngFor="let p of paths"
-      [paths]="p['path']"
-      [fillColor]="'#FF0000'"
-      [strokeColor]="'#FF0000'"
-      [fillOpacity]="0.4"
-      [strokeWeight]="1"
-      (polyClick)="polygonClicked(p['region'])">
-    </sebm-map-polygon>  
-  </sebm-google-map>
+  <div class="panel panel-primary">
+    <sebm-google-map
+      [latitude]="lat"
+      [longitude]="lng"
+      [zoom]="zoom"
+      [disableDefaultUI]="true">
+      <sebm-google-map-marker
+        *ngFor="let m of markers"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [visible]="visible">
+        <sebm-google-map-info-window [disableAutoPan]="true">
+          <p class="tweet-style">{{m.text}}</p>
+          <hr class="my-4">
+          <p class="senti-style">
+            <i [className]="emojiFace[m.senti]"></i>
+          </p>
+        </sebm-google-map-info-window>
+      </sebm-google-map-marker>
+      <sebm-map-polygon
+        *ngFor="let p of paths"
+        [paths]="p['path']"
+        [fillColor]="'#FF0000'"
+        [strokeColor]="'#FF0000'"
+        [fillOpacity]="0.4"
+        [strokeWeight]="1"
+        (polyClick)="polygonClicked(p['region'])">
+      </sebm-map-polygon>  
+    </sebm-google-map>
+  </div>
 </div>
-<div class="col-lg-4">
+<div class="col-lg-3">  
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{polyInfo.region_name}}</h3>
+    </div>
+    <div class="panel-body">
+      <div [ngStyle]="{'display': polyInfo.template}">
+        Click a polygon to get some cool info!
+      </div>
+      <div [ngStyle]="{'display': polyInfo.info}">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <span class="badge">{{polyInfo.smokers_rate}}</span>
+              Rate of smokers:
+          </li>
+          <li class="list-group-item">
+            <span class="badge">{{polyInfo.overwt_rate}}</span>
+              Rate of overweight:
+          </li>
+          <li class="list-group-item">
+            <span class="badge">{{polyInfo.obese_rate}}</span>
+              Obesity rate:
+          </li>
+          <li class="list-group-item">
+            <span class="badge">{{polyInfo.alcohol_cons}}</span>
+              Rate of Alcohol consumptions:
+          </li>          
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
