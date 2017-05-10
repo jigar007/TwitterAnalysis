@@ -5,22 +5,21 @@ USER newuser
 
 # Install app dependencies
 
-RUN mkdir /home/newuser/cloudstoriesapp
+RUN sudo mkdir /home/newuser/cloudstoriesapp
 
 WORKDIR /home/newuser/cloudstoriesapp
 
-COPY package.json /home/newuser/cloudstoriesapp/package.json
-RUN npm install && npm cache clean
+#COPY package.json /home/newuser/cloudstoriesapp/package.json
+#RUN npm install && npm cache clean
 
-COPY package.json /home/newuser/cloudstoriesapp/angular-src/package.json
-RUN npm install && npm cache clean
-
+#COPY angular-src/package.json /home/newuser/cloudstoriesapp/angular-src/package.json
+#RUN cd angular-src
+#RUN npm install && npm cache clean
 
 COPY . /home/newuser/cloudstoriesapp/
 
-
-RUN npm install && nom install nodemon —-save
-RUN cd angular-src; npm install
+RUN sudo npm install && sudo nom install nodemon —-save
+RUN sudo cd angular-src; sudo npm install
 
 # Make port 80 available to the world outside this container
 EXPOSE 4200
