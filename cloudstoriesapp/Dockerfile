@@ -1,6 +1,6 @@
-FROM node:boron
+#FROM node:boron
 
-OM ubuntu:16.04
+FROM ubuntu:16.04
 
 RUN sudo apt-get update
 
