@@ -1,5 +1,8 @@
 FROM node:boron
 
+RUN useradd -ms /bin/bash newuser
+USER newuser
+
 # Install app dependencies
 RUN mkdir /home/$(whoami)/cloudstoriesapp/
 
