@@ -1,16 +1,17 @@
 FROM node:boron
 
 # Install app dependencies
-RUN mkdir ~/cloudstoriesapp/
+RUN mkdir /home/$(whoami)/cloudstoriesapp/
 
-WORKDIR ~/cloudstoriesapp/
+WORKDIR /home/$(whoami)/cloudstoriesapp/
 
-COPY . ~/cloudstoriesapp/
-RUN cd ~/cloudstoriesapp/; npm install
-RUN cd ~/cloudstoriesapp/angular-src/; npm install
+COPY . /home/$(whoami)/cloudstoriesapp/
+RUN npm install nodemon —-g
+RUN cd /home/$(whoami)/cloudstoriesapp/; npm install
+RUN cd /home/$(whoami)/cloudstoriesapp/angular-src/; npm install
 
 # Make port 80 available to the world outside this container
 EXPOSE 4200
 EXPOSE 3000
 
-CMD [“nohup nodemon&”,”cd angular-src/ng serve”]
+CMD [“nohup nodemon&”,”cd /home/$(whoami)/angular-src/“,“ng serve”]
