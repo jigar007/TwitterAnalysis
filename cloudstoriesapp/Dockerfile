@@ -1,13 +1,17 @@
 FROM node:boron
 
-RUN useradd -ms /bin/bash newuser
-USER newuser
+OM ubuntu:16.04
 
-# Install app dependencies
+RUN sudo apt-get update
 
-RUN sudo mkdir /home/newuser/cloudstoriesapp
+#RUN useradd -ms /bin/bash newuser
+#USER newuser
 
-WORKDIR /home/newuser/cloudstoriesapp
+#Install app dependencies
+
+#RUN sudo mkdir /home/newuser/cloudstoriesapp
+
+#WORKDIR /home/newuser/cloudstoriesapp
 
 #COPY package.json /home/newuser/cloudstoriesapp/package.json
 #RUN npm install && npm cache clean
@@ -16,13 +20,13 @@ WORKDIR /home/newuser/cloudstoriesapp
 #RUN cd angular-src
 #RUN npm install && npm cache clean
 
-COPY . /home/newuser/cloudstoriesapp/
+#COPY . /home/newuser/cloudstoriesapp/
 
-RUN sudo npm install && sudo nom install nodemon —-save
-RUN sudo cd angular-src; sudo npm install
+#RUN sudo npm install && sudo nom install nodemon —-save
+#RUN sudo cd angular-src; sudo npm install
 
 # Make port 80 available to the world outside this container
-EXPOSE 4200
-EXPOSE 3000
+#EXPOSE 4200
+#EXPOSE 3000
 
-CMD [“nohup nodemon&”,”ng serve”]
+#CMD [“nohup nodemon&”,”ng serve”]
