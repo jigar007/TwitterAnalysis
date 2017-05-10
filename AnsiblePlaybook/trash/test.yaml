@@ -1,0 +1,26 @@
+---
+- hosts: ap
+  sudo: yes
+  tasks:
+  - name: Configure Docker 
+    template: 
+          src=default_docker.j2 
+          dest=/root/docker 
+          mode=0644 
+          owner=root 
+          group=root
+
+  - name: Ensure web based hello world container is running
+    docker_container:
+            name: web_hello_world
+            image: tutum/hello-world
+            ports:
+              - 80:80
+
+
+
+
+
+
+
+              

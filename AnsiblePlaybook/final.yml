@@ -1,0 +1,46 @@
+---
+- hosts: final
+  sudo: yes
+  tasks:
+
+## installing mongo
+  - name: install curl
+    command: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+  - name: Configure Docker 
+    command: echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+  - name: update apt
+    apt:
+     update_cache: yes
+  - name: install mongodb-org
+    apt:
+     name: mongodb
+  - name: daemon-reload
+    command: systemctl daemon-reload
+
+
+## for installing docker
+  - name: install curl
+    apt: name=curl state=latest
+  - name: update apt
+    apt:
+     update_cache: yes
+  - name: keyserver
+    command:  apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+  - name: Fetch from Internet
+    command:  apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+  - name: update apt
+    apt:
+     update_cache: yes
+  - name: Docker policy update
+    command:  apt-cache policy docker-engine
+  - name: docker-engine install
+    apt:
+      name: docker-engine
+  - name: start docker
+    command:  systemctl status docker
+  - name: add user to group
+    command: usermod -aG docker ubuntu
+
+# ## for test container
+#   - name: web web-test
+#     command: docker run -d --name web-test -p 80:8000 crccheck/hello-world

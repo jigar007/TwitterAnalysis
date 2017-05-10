@@ -26,7 +26,7 @@ RUN pip install tweepy==3.5.0
 RUN pip install twilio==6.0.0
 
 # Make port 80 available to the world outside this container
-EXPOSE 80
+EXPOSE 80:80
 
 # Define environment variable
-ENV NAME World
+ENV PATH /usr/local/postgres-$PG_MAJOR/bin:$PATH
