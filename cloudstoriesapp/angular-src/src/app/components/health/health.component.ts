@@ -17,6 +17,20 @@ export class HealthComponent implements OnInit {
     paths: any = this.fetchPolygons();
     markers: Object[] = this.fetchMarkers();
     visible: Boolean = false;
+    emojiFace: {} = {
+        "neutral": "em em-neutral_face",
+        "positive": "em em-smile",
+        "negative": "em em-angry"
+    }
+    polyInfo: {} = {
+        "template": "block",
+        "info": "none",
+        "region_name": "Try it out!",
+        "smokers_rate": "",
+        "overwt_rate": "",
+        "obese_rate": "",
+        "alcohol_cons": ""
+    };
 
     constructor(private query: QueryService) {}
 
@@ -54,12 +68,23 @@ export class HealthComponent implements OnInit {
                 }
             }
         });
-        console.log(res);
         return res;
     }
 
     polygonClicked(reg: String) {
-        console.log(reg);
+        this.query.getObeseData().subscribe(data => {
+            for (let d of data) {
+                if (String(d["properties"]["area_code"]) === reg) {
+                    this.polyInfo["template"] = "none";
+                    this.polyInfo["info"] = "block";
+                    this.polyInfo["region_name"] = d["properties"]["area_name"];
+                    this.polyInfo["smokers_rate"] = (d["properties"]["smokers_me_2_rate_3_11_7_13"]*100).toFixed(2);
+                    this.polyInfo["overwt_rate"] = (d["properties"]["ovrwght_p_me_2_rate_3_11_7_13"]*100).toFixed(2);
+                    this.polyInfo["obese_rate"] = (d["properties"]["obese_p_me_2_rate_3_11_7_13"]*100).toFixed(2);
+                    this.polyInfo["alcohol_cons"] = (d["properties"]["alcohol_cons_2_rate_3_11_7_13"]*100).toFixed(2);
+                }
+            }
+        });
     }
 
     changeMarkerStatus(elem): void {
@@ -76,14 +101,14 @@ export class HealthComponent implements OnInit {
     }
 
     changeCity(elem): void {
-        if (elem.textContent === "Sydney") {
-            elem.textContent = "Melbourne";
+        if (elem.textContent === "Go to Sydney") {
+            elem.textContent = "Go to Melbourne";
             this.lat = -33.8688;
             this.lng = 151.2093;
         }
 
         else {
-            elem.textContent = "Sydney";
+            elem.textContent = "Go to Sydney";
             this.lat = -37.8136;
             this.lng = 144.9631;
         }

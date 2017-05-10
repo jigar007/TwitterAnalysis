@@ -2,7 +2,7 @@
 // we can have index to different stories here on this page
 const express = require('express');
 const router = express.Router();
-const Models = require('../models/suburbs');
+const Models = require('../models/model');
 const mongoose = require('mongoose');
 
 // different STORIES
@@ -26,6 +26,24 @@ router.get('/showsData', (req, res) => {
 
 router.get('/miscData', (req, res) => {
     Models.getMiscData((err, data) => {
+        res.json(data);
+    });
+});
+
+router.get('/prospData', (req, res) => {
+    Models.getProspData((err, data) => {
+        res.json(data);
+    });
+});
+
+router.get('/obeseData', (req, res) => {
+    Models.getObeseData((err, data) => {
+        res.json(data);
+    });
+});
+
+router.get('/vulnerData', (req, res) => {
+    Models.getVulnerData((err, data) => {
         res.json(data);
     });
 });

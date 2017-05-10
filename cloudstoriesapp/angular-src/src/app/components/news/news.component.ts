@@ -17,6 +17,27 @@ export class NewsComponent implements OnInit {
     paths: any = this.fetchPolygons();
     markers: Object[] = this.fetchMarkers();
     visible: Boolean = false;
+    emojiFace: {} = {
+        "neutral": "em em-neutral_face",
+        "positive": "em em-smile",
+        "negative": "em em-angry"
+    }
+    polyInfo: {} = {
+        "template": "block",
+        "info": "none",
+        "region_name": "Try it out!",
+        "median_rent": "",
+        "female_part": "",
+        "male_emp": "",
+        "female_emp": "",
+        "median_age": "",
+        "post_qualification": "",
+        "wholesale_trade_emp": "",
+        "public_admin_emp": "",
+        "scientific_emp": "",
+        "education_emp": "",
+        "construction_emp": ""
+    };    
 
     constructor(private query: QueryService) {
     }
@@ -59,7 +80,26 @@ export class NewsComponent implements OnInit {
     }
 
     polygonClicked(reg: String) {
-        console.log(reg);
+        this.query.getProspData().subscribe(data => {
+            for (let d of data) {                
+                if (String(d["properties"]["SA2_Code_2011"]) === reg) {
+                    this.polyInfo["template"] = "none";
+                    this.polyInfo["info"] = "block";
+                    this.polyInfo["region_name"] = d["properties"]["SA2_Name_2011"];
+                    this.polyInfo["median_rent"] = d["properties"]["Median_rent"] + " $ per week";
+                    this.polyInfo["female_part"] = (d["properties"]["Female_labour_force_participation_rate"]*100).toFixed(2) + "%";
+                    this.polyInfo["male_emp"] = (d["properties"]["Male_employment_rate"]*100).toFixed(2) + "%";
+                    this.polyInfo["female_emp"] = (d["properties"]["Female_employment_rate"]*100).toFixed(2) + "%";
+                    this.polyInfo["median_age"] = d["properties"]["Median_age"];
+                    this.polyInfo["post_qualification"] = d["properties"]["Proportion_of_working_age_persons_with_post_school_qualificatio"];
+                    this.polyInfo["wholesale_trade_emp"] = d["properties"]["Proportion_employed_in_wholesale_trade"];
+                    this.polyInfo["public_admin_emp"] = d["properties"]["Proportion_employed_in_public_administration_and_safety"];
+                    this.polyInfo["scientific_emp"] = d["properties"]["Proportion_employed_in_professional_scientific_and_technical_se"];
+                    this.polyInfo["education_emp"] = d["properties"]["Proportion_employed_in_education_and_training"];
+                    this.polyInfo["construction_emp"] = d["properties"]["Proportion_employed_in_construction"];
+                }
+            }            
+        });
     }
 
     changeMarkerStatus(elem): void {
@@ -76,14 +116,14 @@ export class NewsComponent implements OnInit {
     }
 
     changeCity(elem): void {
-        if (elem.textContent === "Sydney") {
-            elem.textContent = "Melbourne";
+        if (elem.textContent === "Go to Sydney") {
+            elem.textContent = "Go to Melbourne";
             this.lat = -33.8688;
             this.lng = 151.2093;
         }
 
         else {
-            elem.textContent = "Sydney";
+            elem.textContent = "Go to Sydney";
             this.lat = -37.8136;
             this.lng = 144.9631;
         }

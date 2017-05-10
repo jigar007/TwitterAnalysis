@@ -28,4 +28,19 @@ export class QueryService {
           .map(res => res.json());
   }
 
+  getProspData() {
+    return this.http.get('http://localhost:3000/stories/prospData')
+          .map(res => res.json());
+  }
+
+  getObeseData() {
+    return this.http.get('http://localhost:3000/stories/obeseData')
+          .map(res => res.json());
+  }
+
+  getVulnerData() {
+    return this.http.get('http://localhost:3000/stories/vulnerData')
+          .map(res => res.json());
+  }
+
 }
