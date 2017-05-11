@@ -10,7 +10,7 @@
 
 ### YouTube video ###
 
-*      https://www.youtube.com/watch?v=JfFLWD-UyXQ
+*  [https://www.youtube.com/watch?v=JfFLWD-UyXQ]
 
 ### MongoDB Access ###
 
