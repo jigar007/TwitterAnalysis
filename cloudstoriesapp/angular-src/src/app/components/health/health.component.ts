@@ -17,20 +17,27 @@ export class HealthComponent implements OnInit {
     paths: any = this.fetchPolygons();
     markers: Object[] = this.fetchMarkers();
     visible: Boolean = false;
+    neg = require("../../res/neg_small.png");
+    neutral = require("../../res/neutral_small.png");
+    pos = require("../../res/smile_small.png");
     emojiFace: {} = {
-        "neutral": "em em-neutral_face",
-        "positive": "em em-smile",
-        "negative": "em em-angry"
+        "neutral": this.neg,
+        "positive": this.neutral,
+        "negative": this.pos
     }
+
     polyInfo: {} = {
         "template": "block",
         "info": "none",
         "region_name": "Try it out!",
-        "smokers_rate": "",
-        "overwt_rate": "",
-        "obese_rate": "",
-        "alcohol_cons": ""
+        "epi_desc": "",
+        "evi_desc": "",
+        "median_rent": "",
+        "emp_rate": "",
+        "median_age": "",
+        "post_qualification": ""
     };
+
 
     constructor(private query: QueryService) {}
 
@@ -72,16 +79,18 @@ export class HealthComponent implements OnInit {
     }
 
     polygonClicked(reg: String) {
-        this.query.getObeseData().subscribe(data => {
+        this.query.getAurinData().subscribe(data => {
             for (let d of data) {
-                if (String(d["properties"]["area_code"]) === reg) {
+                if (String(d["region_main"]) === reg) {
                     this.polyInfo["template"] = "none";
                     this.polyInfo["info"] = "block";
-                    this.polyInfo["region_name"] = d["properties"]["area_name"];
-                    this.polyInfo["smokers_rate"] = (d["properties"]["smokers_me_2_rate_3_11_7_13"]*100).toFixed(2);
-                    this.polyInfo["overwt_rate"] = (d["properties"]["ovrwght_p_me_2_rate_3_11_7_13"]*100).toFixed(2);
-                    this.polyInfo["obese_rate"] = (d["properties"]["obese_p_me_2_rate_3_11_7_13"]*100).toFixed(2);
-                    this.polyInfo["alcohol_cons"] = (d["properties"]["alcohol_cons_2_rate_3_11_7_13"]*100).toFixed(2);
+                    this.polyInfo["region_name"] = d["region_name"];
+                    this.polyInfo["epi_desc"] = d["prosp_2"]["EPI_Group_Description_2011"];
+                    this.polyInfo["evi_desc"] = d["vulner_2"]["EVI_Group_Description_2011"];
+                    this.polyInfo["smokers_rate"] = (d["health_data"]["smokers_me_2_rate_3_11_7_13"]).toFixed(2) + "%";
+                    this.polyInfo["overwt_rate"] = (d["health_data"]["ovrwght_p_me_2_rate_3_11_7_13"]).toFixed(2) + "%";
+                    this.polyInfo["obese_rate"] = (d["health_data"]["obese_p_me_2_rate_3_11_7_13"]).toFixed(2) + "%";
+                    this.polyInfo["alcohol_cons"] = (d["health_data"]["alcohol_cons_2_rate_3_11_7_13"]).toFixed(2) + "%";
                 }
             }
         });

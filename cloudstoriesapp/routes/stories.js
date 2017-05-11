@@ -30,20 +30,8 @@ router.get('/miscData', (req, res) => {
     });
 });
 
-router.get('/prospData', (req, res) => {
-    Models.getProspData((err, data) => {
-        res.json(data);
-    });
-});
-
-router.get('/obeseData', (req, res) => {
-    Models.getObeseData((err, data) => {
-        res.json(data);
-    });
-});
-
-router.get('/vulnerData', (req, res) => {
-    Models.getVulnerData((err, data) => {
+router.get('/aurinData', (req, res) => {
+    Models.getAurinData((err, data) => {
         res.json(data);
     });
 });

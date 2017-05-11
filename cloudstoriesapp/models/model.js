@@ -12,24 +12,24 @@ const mainSchema = mongoose.Schema({
 });
 
 const indexSchema = mongoose.Schema({
-    type: String,
-    properties: {},
-    id: String
+    vulner_2: {},
+    prosp_2: {},
+    vulner_1: {},
+    prosp_1: {},
+    health_data: {}
 });
 
 const NewsModel = mongoose.model('polygons_news', mainSchema);
 const HealthModel = mongoose.model('health_datas', mainSchema);
 const ShowsModel = mongoose.model('polygons_shows', mainSchema);
 const MiscModel = mongoose.model('polygons_rawtweets2', mainSchema);
-const ProspModel = mongoose.model('prosp_indices', indexSchema);
-const ObesityModel = mongoose.model('obese_indices', indexSchema);
-const VulnerModel = mongoose.model('vulner_indices', indexSchema);
+const IndexModel = mongoose.model('socio_indices', indexSchema);
 
 module.exports.getNewsData = function (callback) {
     NewsModel
     .find({}, { "_id": 0 })
     .sort({total_tweet: -1})
-    .limit(100)
+    .limit(150)
     .exec(callback);
 }
 
@@ -37,7 +37,7 @@ module.exports.getHealthData = function (callback) {
     HealthModel
     .find({})
     .sort({total_tweet: -1})
-    .limit(100)
+    .limit(150)
     .exec(callback);
 }
 
@@ -45,7 +45,7 @@ module.exports.getShowsData = function (callback) {
     NewsModel
     .find({}, { "_id": 0 })
     .sort({total_tweet: -1})
-    .limit(100)
+    .limit(150)
     .exec(callback);
 }
 
@@ -53,24 +53,12 @@ module.exports.getMiscData = function (callback) {
     MiscModel
     .find({}, { "_id": 0 })
     .sort({total_tweet: -1})
-    .limit(100)
+    .limit(150)
     .exec(callback);
 }
 
-module.exports.getProspData = function (callback) {
-    ProspModel
-    .find({}, { "_id": 0, "properties": 1 })
-    .exec(callback);
-}
-
-module.exports.getObeseData = function (callback) {
-    ObesityModel
-    .find({}, { "_id": 0, "properties": 1 })
-    .exec(callback);
-}
-
-module.exports.getVulnerData = function (callback) {
-    VulnerModel
-    .find({}, { "_id": 0, "properties": 1 })
+module.exports.getAurinData = function (callback) {
+    IndexModel
+    .find({}, { "_id": 0 })
     .exec(callback);
 }

@@ -35,7 +35,7 @@ const appRoutes: Routes = [
     NewsComponent,
     ShowsComponent,
     HealthComponent,
-    MiscComponent,    
+    MiscComponent
   ],
   imports: [
     BrowserModule,

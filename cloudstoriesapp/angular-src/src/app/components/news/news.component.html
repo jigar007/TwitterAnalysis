@@ -17,13 +17,10 @@
         *ngFor="let m of markers"
         [latitude]="m.lat"
         [longitude]="m.lng"
-        [visible]="visible">
+        [visible]="visible"
+        [iconUrl]="emojiFace[m.senti]">
         <sebm-google-map-info-window [disableAutoPan]="true">
-          <p class="tweet-style">{{m.text}}</p>
-          <hr class="my-4">
-          <p class="senti-style">
-            <i [className]="emojiFace[m.senti]"></i>
-          </p>
+          <p class="tweet-style">{{m.text}}</p>          
         </sebm-google-map-info-window>
       </sebm-google-map-marker>
       <sebm-map-polygon
@@ -50,49 +47,29 @@
       <div [ngStyle]="{'display': polyInfo.info}">
         <ul class="list-group">
           <li class="list-group-item">
+            <span class="badge">{{polyInfo.epi_desc}}</span>
+              <em>EPI Description:</em>
+          </li>
+          <li class="list-group-item">
+            <span class="badge">{{polyInfo.evi_desc}}</span>
+              <em>EVI Description:</em>
+          </li>
+          <li class="list-group-item">
             <span class="badge">{{polyInfo.median_rent}}</span>
-              Median Rent:
+              <em>Median Rent:</em>
           </li>
           <li class="list-group-item">
-            <span class="badge">{{polyInfo.female_part}}</span>
-              Female Participation rate:
-          </li>
-          <li class="list-group-item">
-            <span class="badge">{{polyInfo.male_emp}}</span>
-              Male employment rate:
-          </li>
-          <li class="list-group-item">
-            <span class="badge">{{polyInfo.female_emp}}</span>
-              Female employment rate:
-          </li>
+            <span class="badge">{{polyInfo.emp_rate}}</span>
+              <em>Employment Rate:</em>
+          </li>          
           <li class="list-group-item">
             <span class="badge">{{polyInfo.median_age}}</span>
-              Median age:
+              <em>Median age:</em>
           </li>
           <li class="list-group-item">
             <span class="badge">{{polyInfo.post_qualification}}</span>
-              Proportion with post qualification:
-          </li>
-          <li class="list-group-item">
-            <span class="badge">{{polyInfo.wholesale_trade_emp}}</span>
-              Proportion employed in wholesale trade:
-          </li>
-          <li class="list-group-item">
-            <span class="badge">{{polyInfo.public_admin_emp}}</span>
-              Proportion employed in public administration:
-          </li>
-          <li class="list-group-item">
-            <span class="badge">{{polyInfo.scientific_emp}}</span>
-              Proportion employed in scientific or technical profession:
-          </li>
-          <li class="list-group-item">
-            <span class="badge">{{polyInfo.education_emp}}</span>
-              Proportion employed in education and training:
-          </li>
-          <li class="list-group-item">
-            <span class="badge">{{polyInfo.construction_emp}}</span>
-              Proportion employed in construction:
-          </li>
+              <em>Proportion with post qualification:</em>
+          </li>          
         </ul>
       </div>
     </div>

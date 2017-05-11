@@ -17,6 +17,27 @@ export class ShowsComponent implements OnInit {
     paths: any = this.fetchPolygons();
     markers: Object[] = this.fetchMarkers();
     visible: Boolean = false;
+    emojiFace: {} = {
+        "neutral": "em em-neutral_face",
+        "positive": "em em-smile",
+        "negative": "em em-angry"
+    }
+    polyInfo: {} = {
+        "template": "block",
+        "info": "none",
+        "region_name": "Try it out!",
+        "epi_desc": "",
+        "female_part": "",
+        "male_emp": "",
+        "female_emp": "",
+        "median_age": "",
+        "post_qualification": "",
+        "wholesale_trade_emp": "",
+        "public_admin_emp": "",
+        "scientific_emp": "",
+        "education_emp": "",
+        "construction_emp": ""
+    };
 
     constructor(private query: QueryService) { }
 
@@ -58,7 +79,16 @@ export class ShowsComponent implements OnInit {
     }
 
     polygonClicked(reg: String) {
-        console.log(reg);
+        this.query.getAurinData().subscribe(data => {
+            for (let d of data) {
+                if (String(d["properties"]["SA2_Code_2011"]) === reg) {
+                    this.polyInfo["info"] = "block";
+                    this.polyInfo["template"] = "none";
+                    this.polyInfo["epi_desc"] = d["properties"]["EPI_Group_Description_2011"];
+                    this.polyInfo[""]
+                }
+            }
+        });
     }
 
     changeMarkerStatus(elem): void {

@@ -4,7 +4,7 @@
         <a class="list-group-item" (click)="changeMarkerStatus($event.target)">Show Markers</a>
         <a class="list-group-item" (click)="changeCity($event.target)">Go to Sydney</a>
     </div>
-  </div>
+  </div>  
 </div>
 <div class="col-lg-7">
   <div class="panel panel-primary">
@@ -17,13 +17,10 @@
         *ngFor="let m of markers"
         [latitude]="m.lat"
         [longitude]="m.lng"
-        [visible]="visible">
+        [visible]="visible"
+        [iconUrl]="emojiFace[m.senti]">
         <sebm-google-map-info-window [disableAutoPan]="true">
-          <p class="tweet-style">{{m.text}}</p>
-          <hr class="my-4">
-          <p class="senti-style">
-            <i [className]="emojiFace[m.senti]"></i>
-          </p>
+          <p class="tweet-style">{{m.text}}</p>          
         </sebm-google-map-info-window>
       </sebm-google-map-marker>
       <sebm-map-polygon
@@ -51,19 +48,19 @@
         <ul class="list-group">
           <li class="list-group-item">
             <span class="badge">{{polyInfo.smokers_rate}}</span>
-              Rate of smokers:
+              <em>Proportions of smokers:</em>
           </li>
           <li class="list-group-item">
             <span class="badge">{{polyInfo.overwt_rate}}</span>
-              Rate of overweight:
+              <em>Proportion of overweight people:</em>
           </li>
           <li class="list-group-item">
             <span class="badge">{{polyInfo.obese_rate}}</span>
-              Obesity rate:
+              <em>Proportion of obese people:</em>
           </li>
           <li class="list-group-item">
             <span class="badge">{{polyInfo.alcohol_cons}}</span>
-              Rate of Alcohol consumptions:
+              <em>Proportion of people consuming alcohol more than prescribed level:</em>
           </li>          
         </ul>
       </div>
