@@ -1,12 +1,12 @@
 # README #
 
-*  This project is created and uploaded by Team-18 for Cloud Computing (COMP90024)
+*  This project is created and uploaded by __Team-18__ for Cloud Computing (COMP90024)
 *  Team members include ->
-   +  Jigar
-   +  Rakesh
-   +  Sam
-   +  Shivank
-   +  Tanvi
+      +  Jigar (800301)
+      +  Rakesh (751666)
+      +  Sam (541603)
+      +  Shivank (792418)
+      +  Tanvi (838130)
 
 ### MongoDB Access ###
 
