@@ -1,3 +1,10 @@
+### TEAM-18
+	* Jigar
+	* Rakesh
+	* Sam
+	* Shivank
+	* Tanvi
+
 Some of Data is here from AURIN and some from National Map 
 
 ########################################################################
