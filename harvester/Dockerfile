@@ -1,8 +1,10 @@
 # Created by Jigar Thakkar
-# Install all packages needed by harvester
+# Install all packages needed by harvester and run python files
 
 # Use an official Python runtime as a base image
 FROM python:latest
+
+COPY . /home/$(whoami)
 
 # Install any needed packages specified in requirements.txt
 RUN pip install appdirs==1.4.3
@@ -30,6 +32,8 @@ RUN pip install twilio==6.0.0
 
 # Make port 80 available to the world outside this container
 EXPOSE 80:80
+EXPOSE 27017:27017
 
-# Define environment variable
-ENV PATH /usr/local/postgres-$PG_MAJOR/bin:$PATH
+#CMD ["python","find_cities"]
+CMD ["python","searchAPI.py"]
+CMD ["python","streamAPI.py"]
