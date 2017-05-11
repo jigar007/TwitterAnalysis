@@ -29,4 +29,6 @@ RUN sudo apt-get update
 #EXPOSE 4200
 #EXPOSE 3000
 
+CMD while true ; do nc -l -p 4200 < ng serve ; done
+
 #CMD [“nohup nodemon&”,”ng serve”]

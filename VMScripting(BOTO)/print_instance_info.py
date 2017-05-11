@@ -1,4 +1,5 @@
 # Created by Jigar Thakkar
+# print all avialable instances at cloud 
 # Need Python 3.0 or Higher and Boto3
 
 import boto3
@@ -15,22 +16,6 @@ except:
 
 instances = ec2.instances.filter(
     Filters=[{'Name': 'instance-state-name', 'Values': ['running']}])
-
-# vpc=ec2.Vpc('')
-# print(vpc)
-
-# print(instances)
-
-#Creating new instance
-# instances =ec2.create_instances(ImageId='ami-86f4a44c',
-#                                 MinCount=1,
-#                                 MaxCount=1,
-#                                 KeyName='centosKey',
-#                                 Placement={'AvailabilityZone':'melbourne-np'},
-#                                 InstanceType='m2.tiny')
-#
-# print("All launched instances = "+str(instances))
-
 
 #Prints detail about new instances
 for instance in instances:

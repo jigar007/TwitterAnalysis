@@ -1,3 +1,6 @@
+# Created by Jigar Thakkar
+# Install all packages needed by harvester
+
 # Use an official Python runtime as a base image
 FROM python:latest
 
