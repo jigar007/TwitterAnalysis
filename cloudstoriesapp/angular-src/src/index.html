@@ -5,11 +5,34 @@
   <title>Team-18</title>
   <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
   <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body style="background-color: azure">
-  <app-root>Loading...</app-root>
+    <app-root>Loading...</app-root>
+    <div style="position: absolute;right: 30px; top: 88px;">
+      <a href="#animatedModal" id="showModal" style="color: white; font-size: 18px;">
+        Summarize!
+      </a>
+    </div>
+    </div>
+    <div id="animatedModal">
+        <div class="close-animatedModal" style="text-align: center">
+            <!-- <button type="button" class="class" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+            <input type="image" name="submit" value="submit" src="close.png"/>
+        </div>
+        <div class="modal-content" style="height: 100%">
+            <iframe frameborder="0" height="90%" width="100%" src="http://115.146.95.71/graph.html"></iframe>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="./animatedModal.min.js"></script>
+    <script>
+        $("#showModal").animatedModal({color: 'white', animatedIn: 'bounceInUp', animatedOut: 'bounceOutDown'});
+    </script>
 </body>
 </html>

@@ -12,7 +12,13 @@ const suburbs = require('./models/model')
 // which is stored in a config file
 // mongodb://115.146.95.71:27017/rawtweetsdbLive
 const url = 'mongodb://'+config.username+':'+config.password+'@'+config.host+':'+config.port+'/'+config.database+'?authSource='+config.authSource;
-mongoose.connect(url);
+
+try {
+    mongoose.connect(url);
+}
+catch(e) {
+    console.log(e);
+}
 
 // a listener for database connected event
 
@@ -20,14 +26,6 @@ mongoose.Promise = global.Promise;
 
 mongoose.connection.on('connected', () => {
     console.log('Connected to database ' + config.database.substr(config.database.lastIndexOf('/') + 1));    
-    // suburbs.getNewsData((err, data) => {
-    //     if (err) {
-    //         console.log(err.errmsg);
-    //     }
-    //     else {
-    //         console.log(data);
-    //     }
-    // });
 });
 
 // a listener for error in connection event

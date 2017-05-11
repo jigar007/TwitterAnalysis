@@ -16,27 +16,26 @@ export class NewsComponent implements OnInit {
     zoom: Number = 11;
     paths: any = this.fetchPolygons();
     markers: Object[] = this.fetchMarkers();
-    visible: Boolean = false;
+    visible: Boolean = false;    
+    neg = require("../../res/neg_small.png");
+    neutral = require("../../res/neutral_small.png");
+    pos = require("../../res/smile_small.png");
     emojiFace: {} = {
-        "neutral": "em em-neutral_face",
-        "positive": "em em-smile",
-        "negative": "em em-angry"
+        "neutral": this.neg,
+        "positive": this.neutral,
+        "negative": this.pos
     }
+
     polyInfo: {} = {
         "template": "block",
         "info": "none",
         "region_name": "Try it out!",
+        "epi_desc": "",
+        "evi_desc": "",
         "median_rent": "",
-        "female_part": "",
-        "male_emp": "",
-        "female_emp": "",
+        "emp_rate": "",
         "median_age": "",
-        "post_qualification": "",
-        "wholesale_trade_emp": "",
-        "public_admin_emp": "",
-        "scientific_emp": "",
-        "education_emp": "",
-        "construction_emp": ""
+        "post_qualification": ""
     };    
 
     constructor(private query: QueryService) {
@@ -65,8 +64,9 @@ export class NewsComponent implements OnInit {
             }
         });
         return res;
-    }    
+    }
 
+    //Get the sentiment and text for each tweet and show as a map marker
     fetchMarkers(): Object[] {
         let res: Object[] = [];
         this.query.getNewsData().subscribe(coordinates => {
@@ -79,29 +79,26 @@ export class NewsComponent implements OnInit {
         return res;
     }
 
+    //showing data on polygon click
     polygonClicked(reg: String) {
-        this.query.getProspData().subscribe(data => {
-            for (let d of data) {                
-                if (String(d["properties"]["SA2_Code_2011"]) === reg) {
+        this.query.getAurinData().subscribe(data => {
+            for (let d of data) {
+                if (String(d["region_main"]) === reg) {
                     this.polyInfo["template"] = "none";
                     this.polyInfo["info"] = "block";
-                    this.polyInfo["region_name"] = d["properties"]["SA2_Name_2011"];
-                    this.polyInfo["median_rent"] = d["properties"]["Median_rent"] + " $ per week";
-                    this.polyInfo["female_part"] = (d["properties"]["Female_labour_force_participation_rate"]*100).toFixed(2) + "%";
-                    this.polyInfo["male_emp"] = (d["properties"]["Male_employment_rate"]*100).toFixed(2) + "%";
-                    this.polyInfo["female_emp"] = (d["properties"]["Female_employment_rate"]*100).toFixed(2) + "%";
-                    this.polyInfo["median_age"] = d["properties"]["Median_age"];
-                    this.polyInfo["post_qualification"] = d["properties"]["Proportion_of_working_age_persons_with_post_school_qualificatio"];
-                    this.polyInfo["wholesale_trade_emp"] = d["properties"]["Proportion_employed_in_wholesale_trade"];
-                    this.polyInfo["public_admin_emp"] = d["properties"]["Proportion_employed_in_public_administration_and_safety"];
-                    this.polyInfo["scientific_emp"] = d["properties"]["Proportion_employed_in_professional_scientific_and_technical_se"];
-                    this.polyInfo["education_emp"] = d["properties"]["Proportion_employed_in_education_and_training"];
-                    this.polyInfo["construction_emp"] = d["properties"]["Proportion_employed_in_construction"];
+                    this.polyInfo["epi_desc"] = d["prosp_2"]["EPI_Group_Description_2011"];
+                    this.polyInfo["evi_desc"] = d["vulner_2"]["EVI_Group_Description_2011"];
+                    this.polyInfo["region_name"] = d["region_name"];
+                    this.polyInfo["median_rent"] = d["prosp_1"]["Median_rent"];
+                    this.polyInfo["emp_rate"] = (d["prosp_1"]["Employment_rate"]*100).toFixed(2);
+                    this.polyInfo["median_age"] = d["prosp_1"]["Median_age"];
+                    this.polyInfo["post_qualification"] = (d["prosp_1"]["Proportion_of_working_age_persons_with_post_school_qualificatio"]*100).toFixed(2);
                 }
-            }            
+            }
         });
     }
 
+    //Hide and show markers
     changeMarkerStatus(elem): void {
         if (elem.textContent === "Show Markers") {
             elem.textContent = "Hide Markers";
@@ -115,6 +112,7 @@ export class NewsComponent implements OnInit {
         }
     }
 
+    //navigate between Melbourne and Sydney
     changeCity(elem): void {
         if (elem.textContent === "Go to Sydney") {
             elem.textContent = "Go to Melbourne";
